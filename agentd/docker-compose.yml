@@ -1,0 +1,18 @@
+version: '2'
+volumes:
+    zabbix-agentd-conf:
+
+services:
+    agentd:
+      image: gcavalcante8808/zabbix-agentd
+      restart: always
+      environment:
+        ZBX_SERVER: 127.0.0.1
+        REMOTE_COMMAND: 1
+        PROOT_NO_SECCOMP: 1
+      network_mode: host
+      volumes:
+       - zabbix-agentd-conf:/usr/local/etc/zabbix_agentd.conf.d
+       - /:/rootfs
+      cap_add:
+       - SYS_PTRACE
