@@ -5,7 +5,7 @@ volumes:
 
 services:
     agentd:
-      image: gcavalcante8808/zabbix-agentd
+      image: gcavalcante8808/zabbix-agentd:3.2.4-1
       restart: always
       environment:
         ZBX_SERVER: 127.0.0.1
