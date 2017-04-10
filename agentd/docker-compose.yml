@@ -1,6 +1,7 @@
 version: '2'
 volumes:
     zabbix-agentd-conf:
+    zabbix-agentd-scripts:
 
 services:
     agentd:
@@ -13,6 +14,9 @@ services:
       network_mode: host
       volumes:
        - zabbix-agentd-conf:/usr/local/etc/zabbix_agentd.conf.d
+       - zabbix-agentd-scripts:/usr/share/local/zabbix  
        - /:/rootfs
+       - /proc:/rootfs/proc
+       - /dev:/rootfs/dev  
       cap_add:
        - SYS_PTRACE
