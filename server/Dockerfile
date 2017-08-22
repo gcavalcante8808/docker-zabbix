@@ -5,7 +5,7 @@ ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_a
 
 RUN groupadd zabbix && useradd -g zabbix zabbix && \
     chmod +x /usr/local/bin/dumb-init && \
-    apt-get update && apt-get -y install --no-install-recommends fping tar gcc make postgresql \
+    apt-get update && apt-get -y install --no-install-recommends fping tar gcc make postgresql curl \
     libssh2-1-dev libpq-dev libldap2-dev libiksemel-dev libopenipmi-dev unixodbc-dev libsnmp-dev snmp libpng-dev \ 
     libxml2-dev libgnutls28-dev libcurl4-gnutls-dev git nmap fping traceroute libldb-dev && \
     ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
@@ -13,9 +13,8 @@ RUN groupadd zabbix && useradd -g zabbix zabbix && \
     apt-get clean 
 
 WORKDIR /usr/src
-ARG ZBX_VERSION=3.4.0
-ADD http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz  /usr/src/zabbix.tar.gz
-
+ARG ZBX_VERSION=3.0.0
+RUN curl -L --output /usr/src/zabbix.tar.gz http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz
 RUN git clone -c http.SslVerify=False https://github.com/meduketto/iksemel.git && \
     tar xzvf zabbix.tar.gz && \
     cd /usr/src/zabbix-$ZBX_VERSION && \
@@ -35,3 +34,4 @@ COPY files/docker-entrypoint.sh /
 
 USER zabbix
 ENTRYPOINT ["/usr/local/bin/dumb-init","/docker-entrypoint.sh"]
+
