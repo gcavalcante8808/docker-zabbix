@@ -1,13 +1,13 @@
 FROM debian:jessie
 
 RUN groupadd zabbix && useradd -g zabbix zabbix && \
-    apt-get update && apt-get install -y --no-install-recommends gcc make libgnutls28-dev proot && \
+    apt-get update && apt-get install -y --no-install-recommends gcc make libgnutls28-dev proot curl && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
 
-ARG ZBX_VERSION=3.4.0
+ARG ZBX_VERSION=3.0.0
 WORKDIR /usr/src
-ADD http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz /usr/src/zabbix.tar.gz
+RUN curl -L --output /usr/src/zabbix.tar.gz http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
 RUN chmod +x /usr/local/bin/dumb-init && \
