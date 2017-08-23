@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 RUN groupadd zabbix && useradd -g zabbix zabbix && \
-    apt-get update && apt-get install -y --no-install-recommends gcc make libgnutls28-dev proot curl && \
+    apt-get update && apt-get install -y --no-install-recommends gcc make libgnutls28-dev proot curl libevent-dev && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
 
