@@ -7,7 +7,7 @@ RUN groupadd zabbix && useradd -g zabbix zabbix && \
     chmod +x /usr/local/bin/dumb-init && \
     apt-get update && apt-get -y install --no-install-recommends fping wget tar gcc curl make \
     libssh2-1-dev libsqlite3-dev libldap2-dev libiksemel-dev libopenipmi-dev unixodbc-dev libsnmp-dev snmp libpng-dev \ 
-    libxml2-dev libgnutls28-dev libcurl4-gnutls-dev git nmap fping traceroute libldb-dev libevent-dev && \
+    libxml2-dev libgnutls28-dev libcurl4-gnutls-dev git nmap fping traceroute libldb-dev libevent-dev libpcre3-dev && \
     ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean 
