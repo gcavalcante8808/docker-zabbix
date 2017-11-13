@@ -12,7 +12,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so && \
     docker-php-ext-install pgsql xmlrpc ldap bcmath sockets gettext gd
  
 WORKDIR /usr/src
-ARG ZBX_VERSION=3.2.0
+ARG ZBX_VERSION=3.2.1
 
 RUN wget http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz && \
     rm -rf /var/www/html && tar xzvf zabbix-${ZBX_VERSION}.tar.gz && \
