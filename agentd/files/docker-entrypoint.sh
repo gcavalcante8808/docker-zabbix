@@ -32,9 +32,5 @@ ServerActive=${ZBX_SERVER}:${ZBX_SERVER_PORT}
 Timeout=30
 EOT
 
-exec proot -r /rootfs -b /usr/local/sbin -m /usr/local/sbin \
-     -b /usr/local/bin -m /usr/local/bin \
-     -b /usr/local/share/zabbix -m /usr/local/share/zabbix \
-     -b /usr/lib -m /usr/lib -b /usr/local/etc -m /usr/local/etc \
-     sh -c "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu /usr/local/sbin/zabbix_agentd -c /usr/local/etc/zabbix_agentd.conf --foreground"
+exec /usr/local/sbin/zabbix_agentd -c /usr/local/etc/zabbix_agentd.conf --foreground
 

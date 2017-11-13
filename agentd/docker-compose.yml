@@ -5,8 +5,9 @@ volumes:
 
 services:
     agentd:
-      image: gcavalcante8808/zabbix-agentd:3.2.4-1
+      image: gcavalcante8808/zabbix-agentd:3.4.4
       restart: always
+      privileged: true
       environment:
         ZBX_SERVER: 127.0.0.1
         REMOTE_COMMAND: 1
@@ -15,8 +16,5 @@ services:
       volumes:
        - zabbix-agentd-conf:/usr/local/etc/zabbix_agentd.conf.d
        - zabbix-agentd-scripts:/usr/share/local/zabbix  
-       - /:/rootfs
-       - /proc:/rootfs/proc
-       - /dev:/rootfs/dev  
       cap_add:
        - SYS_PTRACE

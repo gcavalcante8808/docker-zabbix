@@ -23,6 +23,7 @@ Update the docker-compose.yml with your Zabbix Server Address and use the docker
 This image contains a vanilla zabbix-agentd compilled again the version defined in the Dockerfile and have the capability to monitor the host processes and other related
 informations.
 
+To work properly with docker, the Zabbix Agentd container should be run in "privileged" mode. In the previous version, the zabbix agentd just used proot to mount the files into the host archives, but was showing annoing problems related with lib versions on different Unix OSes; with this in mind, the proot mode was dropped and the privileged mode should be used from now on.
 Other infos
 -----------
 
