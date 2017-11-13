@@ -5,7 +5,16 @@ This repository contain all information about gcavalcante8808 zabbix docker imag
 
 You can check details of each image at the respective folder.
 
-All images are founded on a Debian image with all modules support (except for mysql on server at this time) and support all versions through 3.0 to 3.2 (and soon 3.4).
+All images are founded on a Debian image with all modules support (except for mysql on server at this time) and support all versions through 3.0 to 3.4.
+
+Supported Versions
+------------------
+
+In general, all stable versions of all daemons are supported. The Server is compilled with PostGreSQL support and an DB Image is provided as Well.
+
+For proxy, the sqlite3 backend is used.
+
+Check the Supported Versions file at  ([Supported Versions](https://github.com/gcavalcante8808/docker-moodle/blob/master/supported_versions))
 
 Simple Usage
 ------------
