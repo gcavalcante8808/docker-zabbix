@@ -14,7 +14,7 @@ In general, all stable versions of all daemons are supported. The Server is comp
 
 For proxy, the sqlite3 backend is used.
 
-Check the Supported Versions file at  ([Supported Versions](https://github.com/gcavalcante8808/docker-moodle/blob/master/supported_versions))
+Check the Supported Versions file at  ([Supported Versions](https://github.com/gcavalcante8808/docker-zabbix/blob/master/supported_versions))
 
 Simple Usage
 ------------
