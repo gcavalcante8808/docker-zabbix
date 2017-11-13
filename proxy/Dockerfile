@@ -13,7 +13,7 @@ RUN groupadd zabbix && useradd -g zabbix zabbix && \
     apt-get clean 
 
 WORKDIR /usr/src
-ARG ZBX_VERSION=3.2.4
+ARG ZBX_VERSION=3.2.5
 RUN curl -L --output /usr/src/zabbix.tar.gz http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz 
 
 RUN git -c http.SslVerify=False clone https://github.com/meduketto/iksemel.git && \
