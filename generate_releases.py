@@ -38,7 +38,6 @@ def add_to_git(version):
     repo.git.add(A=True)
     commit = repo.index.commit('Automatic generation of %s commit' % version)
     tag = [ tag for tag in tags if tag.name == version ]
-    print(tag)
     if tag:
         print('Tag %s will be removed from local repo' %version)
         repo.delete_tag(version)
@@ -66,4 +65,4 @@ for version in supported_versions:
 
     add_to_git(version)
 
-print("All files for supported versions are generated")
+print("All files for supported versions were generated")
