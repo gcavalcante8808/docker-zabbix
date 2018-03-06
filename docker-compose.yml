@@ -18,8 +18,10 @@ services:
       - zabbix-db-data:/var/lib/postgresql/data
 
   agentd:
-    image: gcavalcante8808/zabbix-agentd:3.4.0
+    image: gcavalcante8808/zabbix-agentd:3.4.5
     restart: always
+    ports:
+     - 10050:10050
     environment:
       ZBX_SERVER: 127.0.0.1
       REMOTE_COMMAND: 1
@@ -46,7 +48,7 @@ services:
       DB_TYPE: POSTGRESQL
     volumes:
      - zabbix-server-conf:/usr/local/etc/zabbix_server.conf.d
-     - zabbix-server-scripts:/usr/local/share/zabbix/externalscripts
+     - zabbix-server-scripts:/usr/local/share/zabbix/external_scripts
     ports:
      - "10051:10051"
     depends_on:
