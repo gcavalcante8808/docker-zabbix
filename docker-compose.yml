@@ -8,7 +8,8 @@ volumes:
 
 services:
   db:
-    image: gcavalcante8808/zabbix-db-postgres:3.4.5
+    image: gcavalcante8808/zabbix-db-postgres:4.0.0
+    build: db/
     restart: always
     environment:
       POSTGRES_DB: zabbix
@@ -18,7 +19,8 @@ services:
       - zabbix-db-data:/var/lib/postgresql/data
 
   agentd:
-    image: gcavalcante8808/zabbix-agentd:3.4.5
+    image: gcavalcante8808/zabbix-agentd:4.0.0
+    build: agentd/
     restart: always
     ports:
      - 10050:10050
@@ -37,7 +39,8 @@ services:
      - zabbix-agentd-scripts:/usr/local/share/zabbix/external_scripts/  
 
   server:
-    image: gcavalcante8808/zabbix-server:3.4.5
+    image: gcavalcante8808/zabbix-server:4.0.0
+    build: server/
     restart: always
     environment:
       DB_HOST: db
@@ -55,7 +58,8 @@ services:
      - db
 
   frontend:
-    image: gcavalcante8808/zabbix-frontend:3.4.5
+    image: gcavalcante8808/zabbix-frontend:4.0.0
+    build: frontend/
     restart: always
     environment:
       DB_HOST: db
