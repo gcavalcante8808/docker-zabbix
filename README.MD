@@ -16,6 +16,15 @@ For proxy, the sqlite3 backend is used.
 
 Check the Supported Versions file at  ([Supported Versions](https://github.com/gcavalcante8808/docker-zabbix/blob/master/supported_versions))
 
+To add a new supported version, you use the script *generate_version.py* after install the libraries present in requirements.txt. The command has the following syntax (eg):
+
+```
+   python generate_releases.py --version 4.0.0
+```
+
+Where version is the new version to be supported. To allow the things works as expected, its nice to update the supported_versions file as well.
+
+
 Simple Usage
 ------------
 
