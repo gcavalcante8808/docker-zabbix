@@ -5,7 +5,7 @@ RUN groupadd zabbix && useradd -g zabbix zabbix && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
 
-ARG ZBX_VERSION=3.4.10
+ARG ZBX_VERSION=4.0.0
 WORKDIR /usr/src
 RUN curl -L --output /usr/src/zabbix.tar.gz http://ufpr.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/${ZBX_VERSION}/zabbix-${ZBX_VERSION}.tar.gz
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
