@@ -1,4 +1,4 @@
-FROM postgres:latest
+FROM postgres:10.1
 
 RUN apt-get update && apt-get -y install wget tar && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
