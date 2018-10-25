@@ -41,4 +41,17 @@ LogType=console
 ListenPort=10051
 EOT
 
+if [ ! -z ${EVENT_EXPORT_DIR} ]; then
+    echo "Export event flag reconized. Creating dir and set permissions if needed and configuring zabbix_server."
+    if [[ ! -d ${EVENT_EXPORT_DIR} ]]; then
+        mkdir -p ${EVENT_EXPORT_DIR}
+    fi
+    echo "ExportDir=${EVENT_EXPORT_DIR}" >> $CONF/automatic.conf
+fi
+
+if [[ ! -z ${EVENT_EXPORT_FILESIZE} ]]; then
+    echo "Defining the filezie as ${EVENT_EXPORT_FILESIZE}"
+    echo "ExportFileSize=${EVENT_EXPORT_FILESIZE} >> $CONF/autmoatic.conf"
+fi
+
 exec /usr/local/sbin/zabbix_server -f -c "/usr/local/etc/zabbix_server.conf"
